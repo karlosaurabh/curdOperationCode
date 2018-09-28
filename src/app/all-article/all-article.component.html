@@ -1,0 +1,52 @@
+<hr/>
+<div class="container" *ngIf="allArticle">
+  <div class="row">
+    <div class="col-sm-12">
+        <h4 class="text-primary">All Article</h4>
+    </div>
+    
+    <hr class="bg-primary clearfix"/>
+    <div class="col-md-4 mt-2" *ngFor="let item of allArticle" >
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header text-warning"><b>{{item.title | uppercase}}</b></div>
+        <div class="card-body">
+          <h5 class="card-title">ID: {{item.blogId}} </h5>
+          <hr/>
+          <h5 class="card-title">Category: {{item.author}} </h5>
+          <hr/>
+          <p class="card-text">{{item.description}}</p>
+          <a class="btn btn-info text-white" [routerLink]="['/articleDetail',item.blogId]">Read More</a>
+        </div>
+      </div>
+     </div>
+     
+<!-- <app-article-detail [allArticle]="allArticle"></app-article-detail> -->
+
+
+
+    <!-- <div class="table-responsive">
+      <table class="table mt-2 table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">TITLE</th>
+            <th scope="col">CATEGORY</th>
+            <th scope="col">ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of allArticle">
+            <th scope="row">{{1}}</th>
+            <td>{{item.articleId}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.category}}</td>
+            <td>
+              <a class="btn btn-danger text-white">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->

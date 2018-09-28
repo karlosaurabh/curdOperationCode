@@ -1,0 +1,7 @@
+.form_cont{box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.08); margin-top:1%; padding:15px;}
+.ng-valid[required], .ng-valid.required{
+    border-left:5px solid #42a948;
+}
+.ng-invalid:not(form){
+    border-left:5px solid #a94442;
+}
