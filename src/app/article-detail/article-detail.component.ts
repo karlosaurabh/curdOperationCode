@@ -17,7 +17,7 @@ export class ArticleDetailComponent implements OnInit{
  // @Input() 
   public allArticle;
   public currentArticle;
-  public getCurrentArticleIds;
+
   constructor(
     public router:Router,
     private toastr: ToastrService,
@@ -37,11 +37,11 @@ export class ArticleDetailComponent implements OnInit{
   )
     // this.ActivatedRoute.paramMap.subscribe(params=>{
     //   let getCurrentArticleIds = params.get("getArticleId");
-    this.getCurrentArticleIds = this.ActivatedRoute.snapshot.paramMap.get("getArticleId");
+    let getCurrentArticleIds = this.ActivatedRoute.snapshot.paramMap.get("getArticleId");
       console.log("hello");
-      console.log( this.getCurrentArticleIds);
+      console.log(getCurrentArticleIds);
 
-      this.ArticleService.getArticleInformation( this.getCurrentArticleIds).subscribe(
+      this.ArticleService.getArticleInformation(getCurrentArticleIds).subscribe(
         (data)=>{
           console.log("sdfa"+data)
           this.currentArticle=data.data;
@@ -82,39 +82,7 @@ export class ArticleDetailComponent implements OnInit{
 
 
 
-
-
-    public editArticle():any {
-      // let articleData = {
-      //   title: this.articleTitle,
-      //   description: this.articleDescription,
-      //   blogBody: this.articleBlogBody,
-      //   category: this.articleCategory
-      // }
-      //console.log(articleData);
     
-      this.getCurrentArticleIds= this.ActivatedRoute.snapshot.paramMap.get("getArticleId");
-  console.log("for edit" + this.getCurrentArticleIds)
-    
-  this.ArticleService.editArticle( this.currentArticle, this.getCurrentArticleIds).subscribe(
-        data=>{
-            //console.log("Blog Created");
-            console.log(data);
-            this.toastr.success('Blog Edited successfully Success');
-  
-            setTimeout(()=>{
-              this.router.navigate(['/articleDetail',data.data.blogId]);
-            },1000)
-            this.router.navigate(['\createArticle']);
-        },
-  
-        error=>{
-          console.log("Some error Occured");
-            console.log(error.errorMessage);
-            this.toastr.error('Some error Occured Error');
-        }
-      )
-    }//THIS CODE IS FOR CREATE ARTICLE ENND
 
   //   ngOnChanges(changes:SimpleChanges){
   //     let data = changes.allArticle;

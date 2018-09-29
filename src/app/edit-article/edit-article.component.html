@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row" *ngIf="currentBlog">
+    <h2 class="text-center bg-warning">Edit Blog Page</h2>
+    <div class="col-sm-12" >
+      <form #createBlogForm="ngForm" (ngSubmit)="editThisArticle()">
+
+        <div class="form-group">
+          <label>Blog Title</label>
+          <input type="text" class="form-control" name="blog title" [(ngModel)]="currentBlog.title" #title="ngModel" required>
+        </div>
+        <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+          Blog Title is required
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" name="blog Description" [(ngModel)]="currentBlog.description" #description="ngModel" required>
+          </div>
+          <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
+              Article description is required
+          </div>
+  
+          <div class="form-group">
+            <label>Enter the blog body</label>
+            <input type="text" class="form-control" name="blogBodyHtml" [(ngModel)]="currentBlog.bodyHtml" #bodyHtml="ngModel" required>
+          </div>
+          <div [hidden]="bodyHtml.valid || bodyHtml.pristine" class="alert alert-danger">
+              Article bodyHtml is required
+          </div>
+  
+  
+          <div class="form-group">
+            <label>Catergory</label>
+            <select  [(ngModel)]="currentBlog.category" #category="ngModel" name="blog Category" class="form-control" id="category" required>
+              <option *ngFor="let category of possibleCategories" [value]="category">{{category}}</option>
+            </select>
+          </div>
+          <div [hidden]="category.valid || category.pristine" class="alert alert-danger">
+              Article Catergory is required
+          </div>
+        
+
+        <button type="submit" class="btn btn-primary" [disabled]="!createBlogForm.form.valid">Edit the Blog</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@
 
         </div>
         <div class="card-footer text-muted">
-          <a (click)="editArticle()" class="btn btn-primary text-white">Edit</a>&nbsp;
+          <a [routerLink]="['/articleEdit',currentArticle.blogId]" class="btn btn-primary text-white">Edit</a>&nbsp;
           <a (click)="deleteArticle()" class="btn btn-danger text-white">Delete</a>
         </div>
       </div>

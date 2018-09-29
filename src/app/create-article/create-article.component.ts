@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 //IMPORTING ROUTER
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 
 
 import { ArticleService } from '../article.service';
@@ -24,7 +24,6 @@ export class CreateArticleComponent implements OnInit {
     public router:Router,
     private toastr: ToastrService,
     public ArticleService:ArticleService,
-    public ActivatedRoute:ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -34,7 +33,6 @@ export class CreateArticleComponent implements OnInit {
       
   }//ngonInit
 
-  //THIS CODE IS FOR CREATE ARTICLE START
   public createArticle():any {
     let articleData = {
       title: this.articleTitle,
@@ -60,41 +58,6 @@ export class CreateArticleComponent implements OnInit {
           this.toastr.error('Some error Occured Error');
       }
     )
-  }//THIS CODE IS FOR CREATE ARTICLE ENND
-
-  //THIS CODE IS FOR EDIT ARTICLE START
-
-
-
-
-  public editArticle():any {
-    // let articleData = {
-    //   title: this.articleTitle,
-    //   description: this.articleDescription,
-    //   blogBody: this.articleBlogBody,
-    //   category: this.articleCategory
-    // }
-    //console.log(articleData);
-  
-   let getCurrentArticle= this.ActivatedRoute.snapshot.paramMap.get("getArticleId");
-console.log("for edit" + getCurrentArticle)
-    this.ArticleService.editArticle(getCurrentArticle,getCurrentArticle).subscribe(
-      data=>{
-          //console.log("Blog Created");
-          console.log(data);
-          this.toastr.success('Blog posted successfully Success');
-
-          setTimeout(()=>{
-            this.router.navigate(['/articleDetail',data.data.blogId]);
-          },1000)
-      },
-
-      error=>{
-        console.log("Some error Occured");
-          console.log(error.errorMessage);
-          this.toastr.error('Some error Occured Error');
-      }
-    )
-  }//THIS CODE IS FOR CREATE ARTICLE ENND
+  }
 
 }

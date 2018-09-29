@@ -35,13 +35,14 @@ export class ArticleService {
   }
 
 
-  // EDIT BLOG CODE IS HERE
-  public editArticle(currentArticle, articleId): any {
-    let myResponse = this.http.post(this.baseUrl + articleId +"/edit" + '?authToken=' + this.myApi,currentArticle);
-    console.log('the all bogs Id' + '' + myResponse);
-    return (myResponse);
 
-  }// edit function 
+
+  editThisArticle:any = (getArticleId, currentBlog)=>{
+    return(this.http.put(this.baseUrl + getArticleId + "/edit" + '?authToken=' + this.myApi,currentBlog));
+    console.log("service edit working");
+  }
+
+
 
  //https://blogapp.edwisor.com/api/v1/blogs/:blogId/delete
 

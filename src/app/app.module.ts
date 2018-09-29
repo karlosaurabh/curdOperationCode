@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ArticleService } from './article.service';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { ShareModuleComponent } from './share/share-module/share-module.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ShareModuleComponent } from './share/share-module/share-module.componen
     CreateArticleComponent,
     AllArticleComponent,
     ArticleDetailComponent,
-    ShareModuleComponent
+    ShareModuleComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { ShareModuleComponent } from './share/share-module/share-module.componen
       { path: 'createArticle', component: CreateArticleComponent },
       { path: 'allArticle', component: AllArticleComponent },
       { path: 'articleDetail/:getArticleId', component: ArticleDetailComponent },
+      { path: 'articleEdit/:getArticleId', component: EditArticleComponent },
       { path: '**', component: CreateArticleComponent },
       { path: '*', component: CreateArticleComponent },
     ])
